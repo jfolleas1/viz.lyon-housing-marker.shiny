@@ -10,6 +10,8 @@ library(mapproj)
 source(file = "MapHelper.R", local = TRUE)
 source(file = "DataFilteringHelper.R", local = TRUE)
 source(file = "PlotHelper.R", local = TRUE)
+source(file = "DownloadHelper.R", local = TRUE)
+source(file = "LinearRegHelper.R", local = TRUE)
 
 # Load data --------------------------------------------------------------------
 
@@ -24,7 +26,8 @@ ui <- fluidPage(
     
     # Inputs:
     sidebarPanel(
-      get_data_filtering_inputs(house_sale_df)
+      get_data_filtering_inputs(house_sale_df),
+      get_download_buton()
       ),
     # Output:
     mainPanel(
@@ -37,12 +40,14 @@ ui <- fluidPage(
         tabPanel("Map of the city",
                  leafletOutput("map")),
         tabPanel("Density and scatter plot",
-          get_scatter_dist_plot_pannel(house_sale_df)
-        )
+          get_scatter_dist_plot_pannel(house_sale_df)),
+        tabPanel("Linear regression",
+                 verbatimTextOutput(outputId = 'lmoutput'))
       )
     )
   )
 )
+
 
 # Define server ----------------------------------------------------------------
 
@@ -69,6 +74,8 @@ server <- function(input, output, session) {
     get_lyon_map(sub_house_sale_df())
   })
   build_plot_panel_outputs(input, output, sub_house_sale_df)
+  set_download_action(input, output, sub_house_sale_df)
+  set_linear_reg_pannel_output(input, output, sub_house_sale_df)
 }
 
 # Create a Shiny app object ----------------------------------------------------

@@ -58,7 +58,7 @@ build_plot_panel_outputs <- function(input, output, sub_house_sale_df){
     ggplot(data = sub_house_sale_df(), aes_string(
       x=input$scatterplotx,
       y=input$scatterploty,
-      color=isolate(input$scatterplotcolor))) +
+      color=input$scatterplotcolor)) +
       geom_point()
   })
 }
