@@ -5,6 +5,12 @@ Buidling a simple dashboard with R shiny to explore Lyon housing market.
 
 ### Data table
 
-![Shiny app data table view](https://github.com/jfolleas1/viz.lyon-housing-marker.shiny/blob/main/img/shiny-app-table.png?raw=true)
-
 ![Shiny app data table view](img/shiny-app-table.png)
+
+### Data displayed on a map
+
+![Shiny app data table view](img/shiny-app-map.png)
+
+### Data plots
+
+![Shiny app data table view](img/shiny-app-plot.png)
