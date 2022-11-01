@@ -1,4 +1,4 @@
-# viz.lyon-housing-marker.shiny
+# viz.lyon-housing-market.shiny
 Buidling a simple dashboard with R shiny to explore Lyon housing market.
 
 ## Preview of the application
