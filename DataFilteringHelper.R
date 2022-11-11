@@ -51,6 +51,20 @@ get_data_filtering_inputs <- function(house_sale_df){
                    min = 0,
                    max = trunc(max(house_sale_df$anciennete))+1,
                    value = c(0, trunc(max(house_sale_df$anciennete))+1),
+                   step = 1),
+                 numericInput(
+                   inputId = 'min_price_selector',
+                   label = 'Min price',
+                   value = 0,
+                   min = 0,
+                   max = trunc(max(house_sale_df$prix))+1,
+                   step = 1),
+                 numericInput(
+                   inputId = 'max_price_selector',
+                   label = 'Max price',
+                   value = trunc(max(house_sale_df$prix))+1,
+                   min = 0,
+                   max = trunc(max(house_sale_df$prix))+1,
                    step = 1))
 }
 
@@ -68,5 +82,7 @@ data_filter_application <- function(house_sale_df, input){
     filter(nombre_parkings >= input$nb_car_spaces_selector[1]) %>%
     filter(nombre_parkings <= input$nb_car_spaces_selector[2]) %>%
     filter(anciennete >= input$building_age_selector[1]) %>%
-    filter(anciennete <= input$building_age_selector[2])
+    filter(anciennete <= input$building_age_selector[2]) %>%
+    filter(prix >= input$min_price_selector) %>%
+    filter(prix <= input$max_price_selector)
 }
